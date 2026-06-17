@@ -2,7 +2,7 @@
 //  pages/_home.scss
 //  文字導向雙欄：個人 profile 側欄 + 文章列表主欄。
 // =============================================================
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 .home {
   --wash-h: 360px;
@@ -12,7 +12,10 @@
   align-items: start;
   padding: var(--space-12) 0 var(--space-8);
 
-  @include respond-to('lg') { grid-template-columns: 1fr; gap: var(--space-10); }
+  @include respond-to("lg") {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
 }
 
 // --- profile 側欄 -------------------------------------------
@@ -20,21 +23,23 @@
   position: sticky;
   top: 88px;
 
-  @include respond-to('lg') { position: static; }
+  @include respond-to("lg") {
+    position: static;
+  }
 
   &__card {
     @include card-surface(var(--radius-xl));
     padding: var(--space-7) var(--space-6) var(--space-6);
     text-align: center;
 
-    @include respond-to('lg') {
+    @include respond-to("lg") {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: var(--space-6);
       text-align: left;
       align-items: center;
     }
-    @include respond-to('sm') {
+    @include respond-to("sm") {
       grid-template-columns: 1fr;
       text-align: center;
       justify-items: center;
@@ -44,15 +49,20 @@
   &__photo-wrap {
     width: 118px;
     height: 118px;
-    margin: 0 auto;
-    @include respond-to('lg') { grid-row: span 2; }
+    margin: 20px auto;
+    @include respond-to("lg") {
+      grid-row: span 2;
+    }
   }
   &__photo {
     display: block;
     width: 118px;
     height: 118px;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--color-surface), 0 0 0 6px var(--orange-200), var(--shadow-md);
+    box-shadow:
+      0 0 0 4px var(--color-surface),
+      0 0 0 6px var(--orange-200),
+      var(--shadow-md);
   }
 
   &__name {
@@ -70,11 +80,12 @@
     margin: 6px 0 0;
   }
   &__bio {
-    margin: var(--space-4) 0 0;
+    margin: var(--space-4) var(--space-3) 0;
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
     color: var(--text-muted);
     text-wrap: pretty;
+    text-align: left;
   }
   &__chips {
     display: flex;
@@ -82,8 +93,12 @@
     gap: 7px;
     justify-content: center;
     margin-top: var(--space-5);
-    @include respond-to('lg') { justify-content: flex-start; }
-    @include respond-to('sm') { justify-content: center; }
+    @include respond-to("lg") {
+      justify-content: flex-start;
+    }
+    @include respond-to("sm") {
+      justify-content: center;
+    }
   }
   &__social {
     display: flex;
@@ -93,8 +108,15 @@
     padding-top: var(--space-5);
     border-top: 1px solid var(--color-border-faint);
 
-    @include respond-to('lg') { justify-content: flex-start; border-top: none; padding-top: 0; margin-top: var(--space-3); }
-    @include respond-to('sm') { justify-content: center; }
+    @include respond-to("lg") {
+      justify-content: flex-start;
+      border-top: none;
+      padding-top: 0;
+      margin-top: var(--space-3);
+    }
+    @include respond-to("sm") {
+      justify-content: center;
+    }
 
     a {
       width: 38px;
@@ -106,13 +128,22 @@
       color: var(--text-muted);
       border: 1px solid var(--color-border);
       background: var(--color-bg);
-      transition: color var(--dur-base) var(--ease-soft), border-color var(--dur-base), transform var(--dur-fast);
-      &:hover { color: var(--color-accent); border-color: var(--orange-300); transform: translateY(-2px); }
+      transition:
+        color var(--dur-base) var(--ease-soft),
+        border-color var(--dur-base),
+        transform var(--dur-fast);
+      &:hover {
+        color: var(--color-accent);
+        border-color: var(--orange-300);
+        transform: translateY(-2px);
+      }
     }
   }
   &__cats {
     margin-top: var(--space-5);
-    @include respond-to('lg') { grid-column: 1 / -1; }
+    @include respond-to("lg") {
+      grid-column: 1 / -1;
+    }
   }
 }
 
@@ -129,10 +160,20 @@
   text-decoration: none;
   color: var(--text-body);
   transition: background var(--dur-base) var(--ease-soft);
-  &:hover { background: var(--cream-200); }
+  &:hover {
+    background: var(--cream-200);
+  }
 
-  &__dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
-  &__name { font-size: var(--text-base); font-weight: var(--weight-medium); }
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex: none;
+  }
+  &__name {
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+  }
   &__count {
     margin-left: auto;
     font-family: var(--font-mono);
@@ -142,7 +183,10 @@
     padding: 2px 9px;
     border-radius: var(--radius-full);
   }
-  &:hover &__count { background: var(--orange-100); color: var(--color-accent); }
+  &:hover &__count {
+    background: var(--orange-100);
+    color: var(--color-accent);
+  }
 }
 
 // --- 主欄 feed ----------------------------------------------
@@ -154,8 +198,13 @@
     color: var(--text-heading);
     margin: 0;
     line-height: var(--leading-tight);
-    em { font-style: normal; color: var(--color-primary); }
-    @include respond-to('sm') { font-size: var(--text-2xl); }
+    em {
+      font-style: normal;
+      color: var(--color-primary);
+    }
+    @include respond-to("sm") {
+      font-size: var(--text-2xl);
+    }
   }
   &__sub {
     margin: var(--space-3) 0 var(--space-6);
@@ -170,19 +219,31 @@
     gap: var(--space-3);
     @include mono-label;
     margin: var(--space-8) 0 var(--space-2);
-    &::after { content: ""; flex: 1; height: 1px; background: var(--color-border-faint); }
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--color-border-faint);
+    }
   }
-  &__more { margin-top: var(--space-8); }
+  &__more {
+    margin-top: var(--space-8);
+  }
 }
 
-.postlist { display: flex; flex-direction: column; }
+.postlist {
+  display: flex;
+  flex-direction: column;
+}
 .postitem {
   display: block;
   text-decoration: none;
   padding: var(--space-6) 0;
   border-bottom: 1px solid var(--color-border-faint);
   transition: transform var(--dur-base) var(--ease-out);
-  &:hover { transform: translateX(4px); }
+  &:hover {
+    transform: translateX(4px);
+  }
 
   &__meta {
     display: flex;
@@ -192,7 +253,12 @@
     font-size: var(--text-xs);
     color: var(--text-faint);
     margin-bottom: 10px;
-    .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-faint); }
+    .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-faint);
+    }
   }
   &__title {
     font-family: var(--font-display);
@@ -203,9 +269,13 @@
     margin: 0;
     text-wrap: balance;
     transition: color var(--dur-base) var(--ease-soft);
-    @include respond-to('sm') { font-size: var(--text-xl); }
+    @include respond-to("sm") {
+      font-size: var(--text-xl);
+    }
   }
-  &:hover &__title { color: var(--color-accent); }
+  &:hover &__title {
+    color: var(--color-accent);
+  }
   &__excerpt {
     margin: var(--space-3) 0 0;
     color: var(--text-muted);
