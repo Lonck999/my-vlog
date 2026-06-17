@@ -1,0 +1,22 @@
+// =============================================================
+//  abstracts/_variables.scss
+//  編譯期 SCSS 變數。執行期的色彩/字級/間距 token 仍由
+//  base/_root.scss 以 CSS custom properties 輸出（DS 元件吃 var(--*)）。
+//  這裡只放 SCSS 在「編譯時」需要的值：斷點、layout 寬度、map。
+// =============================================================
+
+// --- 響應式斷點（對應目前各頁的 max-width 查詢）---------------
+$breakpoints: (
+  'sm': 680px,   // 手機
+  'md': 760px,   // 小平板 — blog / projects grid 收成單欄
+  'lg': 900px,   // 平板 — home 雙欄、resume 雙欄收合
+);
+
+// --- Layout 寬度（與 spacing token 對齊）----------------------
+$container-narrow: 720px;   // 文章閱讀欄
+$container-base:   1040px;  // 站台框架
+$container-wide:   1200px;
+
+// --- z-index 層級 --------------------------------------------
+$z-nav:     20;
+$z-overlay: 50;

@@ -1,0 +1,91 @@
+// =============================================================
+//  layout/_nav.scss
+//  滿版導覽列（背景 + 底線拉到整個視窗），內容置中於內容欄。
+// =============================================================
+@use '../abstracts' as *;
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  background: rgba(251, 244, 234, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-6);
+    max-width: var(--container-base);
+    margin-inline: auto;
+    padding: var(--space-4) var(--space-6);
+
+    > :last-child { justify-self: end; }
+  }
+
+  &__brand {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  &__mark {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: var(--shadow-glow);
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-xl);
+    color: var(--text-heading);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+
+    i {
+      font-family: var(--font-mono);
+      font-style: normal;
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      color: var(--text-faint);
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    justify-self: center;
+  }
+
+  &__link {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    transition: color var(--dur-base) var(--ease-soft),
+                background var(--dur-base) var(--ease-soft);
+
+    &:hover { color: var(--color-accent); background: var(--orange-50); }
+    &.is-active { color: var(--text-heading); background: var(--cream-200); }
+  }
+
+  @include respond-to('sm') {
+    &__links { display: none; }
+  }
+}

@@ -1,0 +1,58 @@
+// =============================================================
+//  components/_code-block.scss
+//  文章內頁的暖炭黑程式碼區塊（含視窗列 + 語法 token 顏色）。
+// =============================================================
+@use '../abstracts' as *;
+
+.codeblock {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: var(--code-surface);
+    border-bottom: 1px solid var(--code-border);
+  }
+
+  &__dot { width: 11px; height: 11px; border-radius: 50%; }
+
+  &__file {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--code-comment);
+  }
+
+  pre {
+    margin: 0;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--code-text);
+  }
+
+  // 區塊內 code 不套行內 code 的米色底
+  code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+  }
+}
+
+// 語法 token
+.tok-key  { color: var(--code-keyword); }
+.tok-str  { color: var(--code-string); }
+.tok-fn   { color: var(--code-func); }
+.tok-num  { color: var(--code-number); }
+.tok-com  { color: var(--code-comment); font-style: italic; }
+.tok-punc { color: var(--code-punc); }

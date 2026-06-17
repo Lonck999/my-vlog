@@ -1,0 +1,8 @@
+// =============================================================
+//  base/_fonts.scss
+//  CJK 字體量大，從 Google Fonts CDN 載入（需網路）。
+//  - LXGW WenKai TC 霞鶩文楷 → 標題 / 品牌（暖感毛筆楷）
+//  - Noto Sans TC            → 內文（中文閱讀）
+//  - JetBrains Mono          → 程式碼
+// =============================================================
+@import url("https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap");

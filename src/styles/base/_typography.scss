@@ -1,0 +1,97 @@
+// =============================================================
+//  base/_typography.scss
+//  元素級預設 + 長文 .prose 排版（文章內頁共用）。
+// =============================================================
+@use '../abstracts' as *;
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  color: var(--text-heading);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-bold);
+}
+
+code, pre, kbd, samp { font-family: var(--font-mono); }
+
+// --- 長文排版 ------------------------------------------------
+.prose {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+
+  > * + * { margin-top: var(--space-6); }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    color: var(--text-heading);
+    margin-top: var(--space-12);
+    line-height: var(--leading-snug);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-xl);
+    color: var(--text-heading);
+    margin-top: var(--space-10);
+  }
+  p { margin: 0; text-wrap: pretty; }
+
+  a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--orange-200);
+    transition: text-decoration-color var(--dur-base);
+    &:hover { text-decoration-color: var(--color-accent); }
+  }
+
+  strong { color: var(--text-heading); font-weight: var(--weight-bold); }
+
+  ul { padding-left: 1.4em; }
+  li {
+    margin-top: var(--space-2);
+    &::marker { color: var(--color-primary); }
+  }
+
+  // 行內 code（注意：dark code block 內的 code 由 _code-block 覆寫）
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    background: var(--cream-300);
+    color: var(--orange-800);
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
+  }
+
+  blockquote {
+    margin: 0;
+    padding: var(--space-5) var(--space-6);
+    background: var(--cream-200);
+    border-radius: var(--radius-md);
+    color: var(--ink-800);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    p { margin: 0; }
+  }
+
+  figure { margin: 0; }
+  figcaption {
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-align: center;
+  }
+}

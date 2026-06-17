@@ -1,0 +1,21 @@
+// =============================================================
+//  main.scss — 暖光 warmlight 部落格樣式入口（7-1 架構）
+//  依序組裝各層。abstracts 不輸出 CSS，只提供變數/mixin。
+// =============================================================
+
+// 1. Abstracts — 變數、function、mixin（無 CSS 輸出）
+@use 'abstracts';
+
+// 2. Base — 字體、:root token、reset、排版
+@use 'base';
+
+// 3. Layout — container、nav、footer、區塊/頁首標題
+@use 'layout';
+
+// 4. Components — 按鈕、標籤、卡片、程式碼區塊
+@use 'components';
+
+// 5. Pages — 各頁專屬版型
+@use 'pages';
+
+// （themes / vendors 目前未使用 — 要做深色模式時新增 themes/_dark.scss）

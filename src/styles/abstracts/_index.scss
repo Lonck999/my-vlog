@@ -1,0 +1,9 @@
+// =============================================================
+//  abstracts/_index.scss
+//  一次 forward 所有 abstracts，讓各 .vue / partial 用：
+//      @use '@/styles/abstracts' as *;
+//  即可取得變數、function、mixin（不會輸出任何 CSS）。
+// =============================================================
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

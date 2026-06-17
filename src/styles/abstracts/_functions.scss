@@ -1,0 +1,19 @@
+// =============================================================
+//  abstracts/_functions.scss
+// =============================================================
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as *;
+
+// 取斷點值，找不到就報錯
+@function bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "未知斷點 `#{$name}` — 可用：#{map.keys($breakpoints)}";
+  }
+  @return map.get($breakpoints, $name);
+}
+
+// px → rem（base 16px），給需要 rem 的場合
+@function rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}

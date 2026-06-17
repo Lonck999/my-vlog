@@ -1,0 +1,59 @@
+// =============================================================
+//  components/_tag.scss
+//  分類 / 篩選標籤。對應 DS <Tag>。四個分類各有暖色；neutral 為通用。
+// =============================================================
+@use '../abstracts' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+
+  &--sm { font-size: var(--text-xs); padding: 3px 10px; }
+  &--md { font-size: var(--text-sm); padding: 5px 13px; }
+
+  // 分類色 — 用 data 屬性或 modifier 切換
+  &--lang    { color: var(--cat-lang-fg);    background: var(--cat-lang-bg); }
+  &--frame   { color: var(--cat-frame-fg);   background: var(--cat-frame-bg); }
+  &--work    { color: var(--cat-work-fg);    background: var(--cat-work-bg); }
+  &--project { color: var(--cat-project-fg); background: var(--cat-project-bg); }
+  &--neutral { color: var(--text-muted);     background: var(--cream-200); }
+
+  // 篩選用：outline + active
+  &--outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--dur-base), border-color var(--dur-base), background var(--dur-base);
+    &:hover { border-color: var(--orange-300); color: var(--color-accent); }
+  }
+  &.is-active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+}
+
+// =============================================================
+//  components/_tech-chip.scss
+//  等寬技術標籤 + 色點。對應 DS <TechChip>。
+// =============================================================
+.techchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+
+  &__dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+}
