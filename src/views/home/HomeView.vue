@@ -1,6 +1,10 @@
 <script setup>
 import { posts, categories, categoryCounts } from "@/data/posts";
 import { profileInfo, sidebarMenuConfig, feedLabels, welcomeLabels } from "@/data/personalInfo";
+import IconGithub from "@/components/icons/IconGithub.vue";
+import IconMail from "@/components/icons/IconMail.vue";
+import IconFile from "@/components/icons/IconFile.vue";
+import IconArrowRight from "@/components/icons/IconArrowRight.vue";
 
 const latestPosts = posts.slice(0, 6);
 </script>
@@ -12,7 +16,7 @@ const latestPosts = posts.slice(0, 6);
         <aside class="profile">
           <div class="profile__card">
             <div class="profile__photo-wrap">
-              <img class="profile__photo" src="/images/avatar.jpg" alt="Ray 的照片" />
+              <img class="profile__photo" src="/images/avatar.jpg" alt="地瓜球的照片" />
             </div>
             <h1 class="profile__name">{{ profileInfo.name }}</h1>
             <p class="profile__role">{{ profileInfo.role }}</p>
@@ -25,50 +29,13 @@ const latestPosts = posts.slice(0, 6);
             </div>
             <div class="profile__social">
               <a href="#" aria-label="GitHub">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                  />
-                </svg>
+                <IconGithub :size="18" />
               </a>
               <a href="#" aria-label="Mail">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="m22 7-10 5L2 7" />
-                </svg>
+                <IconMail :size="18" />
               </a>
               <RouterLink to="/resume" aria-label="履歷">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="2" y="7" width="20" height="14" rx="2" />
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                </svg>
+                <IconFile :size="18" />
               </RouterLink>
             </div>
             <nav class="profile__cats">
@@ -113,18 +80,7 @@ const latestPosts = posts.slice(0, 6);
           <div class="feed__more">
             <RouterLink class="btn btn--secondary btn--md" to="/blog">
               {{ feedLabels.morePostsTitle }}
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <IconArrowRight :size="16" />
             </RouterLink>
           </div>
         </section>

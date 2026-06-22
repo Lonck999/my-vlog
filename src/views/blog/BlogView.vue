@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { posts, categories } from '@/data/posts'
+import IconSwap from '@/components/icons/IconSwap.vue'
 
 const route = useRoute()
 const selectedCategory = ref(route.query.category ?? 'all')
@@ -25,18 +26,7 @@ const filteredPosts = computed(() =>
     <div class="container">
       <header class="page-head">
         <span class="page-head__kicker">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
-          </svg>
+          <IconSwap :size="14" />
           BLOG · 文章
         </span>
         <h1 class="page-head__title">寫下來，才算真的學會</h1>

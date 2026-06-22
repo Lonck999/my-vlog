@@ -1,6 +1,6 @@
 # 進度紀錄：HomeView 優化（sr 助教引導）
 
-> 最後更新：2026-06-22
+> 最後更新：2026-06-22（追加：使用者決定暫緩 PostCard 抽取）
 
 ## 目前任務
 
@@ -43,9 +43,22 @@
      - 整個卡片要連到哪個網址這件事，該由 `PostCard` 內部決定還是由父層傳入——尚未定案
    - 連帶提醒但尚未處理：SVG icon（GitHub / Mail / 履歷 / 箭頭，共 4 處內嵌 SVG）尚未抽成獨立 icon 元件，建議跟 `PostCard` 一起或之後處理
 
+## 5. PostCard 抽取——使用者決定：暫緩
+
+延續 sr 助教蘇格拉底式引導，討論到「`categories.find()` 查找邏輯該放 PostCard 內部還是父層先轉換好再傳入」這一題時，使用者明確表示：
+
+> 先維持這樣，等之後上線完開始寫後端時再來改善
+
+也就是：
+- **HomeView.vue / BlogView.vue 目前的重複卡片結構暫不抽成 `PostCard.vue`**，維持現狀（各自獨立寫一份 `RouterLink v-for` + `categories.find()`）。
+- 連帶的「`<RouterLink to="/post">` 寫死、`/post/:id` 動態路由、`PostView.vue` 完全沒有依 id 載入文章內容」這幾項技術債，也一併延後到接後端時統一處理（sr 助教過程中額外發現：`PostView.vue` 目前是完全靜態內容，連 `route.params.id` 都沒有用到，比卡片連結技術債更大，值得屆時一起處理）。
+- PostCard 的 props 介面設計（候選：`categoryLabel` 字串 vs 整個 `categories` 查找表）暫不需要決定，等真的要動手時再議。
+
+**本輪 HomeView 優化任務（5 個項目）視為結案**：1～4 項已完成並落地，第 5 項（PostCard 抽取）經使用者決定延後，非中途卡住。
+
 ## 對話中收集到但尚未寫入程式碼的資訊（避免重複詢問）
 
 - 使用者已確認 `BlogView.vue` 原本的空狀態 class 叫 `blog__empty`（已處理，僅留存於此作為歷史脈絡）
 - 使用者已決定空狀態樣式要做成**全域共用 class**（非元件化），並選擇放在 `src/styles/components/` 而非 `base/`（理由：`base/` 只放設計 token，不放具體 UI 樣式）——此決策邏輯未來若有類似「樣式該放哪一層」的疑問可參考
-- 使用者尚未回答：`PostCard.vue` 的 props 介面設計（見上方待辦）
+- **PostCard.vue 抽取、`/post/:id` 動態路由、`PostView.vue` 依 id 載入內容**：使用者已決定全部延後到「上線後開始寫後端」時一起處理，目前不要主動提起或動手
 - 已知但尚未修的技術債：`npm run format`（oxfmt）會把 `.vue` 的 `<script>` 區塊改成雙引號 + 加分號，跟專案既有的單引號、無分號慣例不一致，可能需要補一份 oxfmt/prettier 設定鎖定既有風格——使用者尚未決定是否處理
