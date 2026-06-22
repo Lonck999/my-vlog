@@ -11,29 +11,38 @@
   position: relative;
   z-index: 1;
 
-  &--narrow { max-width: var(--container-narrow); }
+  &--narrow {
+    max-width: var(--container-narrow);
+  }
 }
 
 // 頁面區塊節奏
-.block { padding: var(--space-12) 0; }
+.block {
+  padding: var(--space-12) 0;
+}
 
 // 微抬升的暖色帶（首頁「最新文章」用）
 .band-soft {
   background: linear-gradient(
-    180deg, transparent,
-    var(--cream-200) 14%, var(--cream-200) 86%, transparent
+    180deg,
+    transparent,
+    var(--cream-200) 14%,
+    var(--cream-200) 86%,
+    transparent
   );
 }
 
 // 頁首頂部的柔和暖色光暈（由各頁設定 --wash-h 高度）
-body { position: relative; }
+body {
+  position: relative;
+}
 body::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: var(--wash-h, 560px);
   background:
-    radial-gradient(60% 70% at 78% -8%, rgba(255, 155, 82, 0.20), transparent 60%),
+    radial-gradient(60% 70% at 78% -8%, rgba(255, 155, 82, 0.2), transparent 60%),
     radial-gradient(48% 60% at 12% 4%, rgba(248, 210, 194, 0.28), transparent 62%);
   pointer-events: none;
   z-index: 0;

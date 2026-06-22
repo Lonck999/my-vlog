@@ -53,14 +53,14 @@ export default defineConfig({
       },
     },
   },
-});
+})
 ```
 
 全域樣式在進入點載入一次：
 
 ```ts
 // main.ts
-import './styles/main.scss';
+import './styles/main.scss'
 ```
 
 接著元件內可直接用 mixin / 斷點：
@@ -70,7 +70,9 @@ import './styles/main.scss';
 .card {
   @include card-surface;
   @include hover-lift;
-  @include respond-to('md') { /* ... */ }
+  @include respond-to('md') {
+    /* ... */
+  }
 }
 </style>
 ```

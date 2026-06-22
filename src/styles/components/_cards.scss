@@ -34,7 +34,9 @@
     margin: 0;
     transition: color var(--dur-base) var(--ease-soft);
   }
-  &:hover &__title { color: var(--color-accent); }
+  &:hover &__title {
+    color: var(--color-accent);
+  }
 
   &__excerpt {
     margin: 0;
@@ -83,9 +85,14 @@
   &__arrow {
     margin-left: auto;
     color: var(--text-faint);
-    transition: transform var(--dur-base) var(--ease-out), color var(--dur-base);
+    transition:
+      transform var(--dur-base) var(--ease-out),
+      color var(--dur-base);
   }
-  &:hover &__arrow { transform: translateX(4px); color: var(--color-accent); }
+  &:hover &__arrow {
+    transform: translateX(4px);
+    color: var(--color-accent);
+  }
 }
 
 // --- 麵包屑 --------------------------------------------------
@@ -98,9 +105,19 @@
   font-size: var(--text-xs);
   color: var(--text-faint);
 
-  a { text-decoration: none; color: var(--text-muted); &:hover { color: var(--color-accent); } }
-  &__sep { color: var(--text-faint); }
-  &__current { color: var(--text-body); }
+  a {
+    text-decoration: none;
+    color: var(--text-muted);
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+  &__sep {
+    color: var(--text-faint);
+  }
+  &__current {
+    color: var(--text-body);
+  }
 }
 
 // --- 頭像 ----------------------------------------------------
@@ -115,10 +132,30 @@
   font-weight: 700;
   overflow: hidden;
 
-  &--sm { width: 32px; height: 32px; font-size: var(--text-sm); }
-  &--md { width: 44px; height: 44px; font-size: var(--text-base); }
-  &--xl { width: 96px; height: 96px; font-size: var(--text-2xl); }
-  &--ring { box-shadow: 0 0 0 3px var(--color-surface), 0 0 0 5px var(--orange-200); }
+  &--sm {
+    width: 32px;
+    height: 32px;
+    font-size: var(--text-sm);
+  }
+  &--md {
+    width: 44px;
+    height: 44px;
+    font-size: var(--text-base);
+  }
+  &--xl {
+    width: 96px;
+    height: 96px;
+    font-size: var(--text-2xl);
+  }
+  &--ring {
+    box-shadow:
+      0 0 0 3px var(--color-surface),
+      0 0 0 5px var(--orange-200);
+  }
 
-  img { width: 100%; height: 100%; object-fit: cover; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

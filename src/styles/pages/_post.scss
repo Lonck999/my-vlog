@@ -3,14 +3,25 @@
 // =============================================================
 @use '../abstracts' as *;
 
-.post-page { --wash-h: 380px; }
+.post-page {
+  --wash-h: 380px;
+}
 
 .article {
   padding: var(--space-8) 0 var(--space-12);
 
-  &__breadcrumb { margin-bottom: var(--space-8); }
-  &__head { margin-bottom: var(--space-10); }
-  &__meta-top { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }
+  &__breadcrumb {
+    margin-bottom: var(--space-8);
+  }
+  &__head {
+    margin-bottom: var(--space-10);
+  }
+  &__meta-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
 
   &__title {
     font-family: var(--font-display);
@@ -21,7 +32,9 @@
     color: var(--text-heading);
     margin: 0;
     text-wrap: balance;
-    @include respond-to('sm') { font-size: var(--text-3xl); }
+    @include respond-to('sm') {
+      font-size: var(--text-3xl);
+    }
   }
 
   &__byline {
@@ -35,8 +48,17 @@
     font-size: var(--text-sm);
     color: var(--text-muted);
   }
-  &__byline-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-faint); }
-  &__author-name { font-family: var(--font-sans); font-weight: var(--weight-medium); color: var(--text-body); }
+  &__byline-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-faint);
+  }
+  &__author-name {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-medium);
+    color: var(--text-body);
+  }
 }
 
 // 圖片佔位
@@ -47,8 +69,10 @@
   border: 1px solid var(--color-border);
   background: repeating-linear-gradient(
     135deg,
-    var(--cream-200), var(--cream-200) 11px,
-    var(--cream-300) 11px, var(--cream-300) 22px
+    var(--cream-200),
+    var(--cream-200) 11px,
+    var(--cream-300) 11px,
+    var(--cream-300) 22px
   );
   display: flex;
   align-items: center;
@@ -82,7 +106,9 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
   margin-top: var(--space-10);
-  @include respond-to('sm') { grid-template-columns: 1fr; }
+  @include respond-to('sm') {
+    grid-template-columns: 1fr;
+  }
 
   a {
     display: flex;
@@ -93,8 +119,20 @@
     @include card-surface(var(--radius-lg));
     @include hover-lift;
 
-    &.is-next { text-align: right; align-items: flex-end; }
+    &.is-next {
+      text-align: right;
+      align-items: flex-end;
+    }
   }
-  &__dir { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-faint); }
-  &__title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--text-heading); }
+  &__dir {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+  }
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: var(--text-heading);
+  }
 }

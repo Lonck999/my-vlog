@@ -5,7 +5,8 @@
         <nav class="breadcrumb article__breadcrumb" aria-label="breadcrumb">
           <RouterLink to="/">首頁</RouterLink><span class="breadcrumb__sep">/</span>
           <RouterLink to="/blog">文章</RouterLink><span class="breadcrumb__sep">/</span>
-          <RouterLink :to="{ path: '/blog', query: { category: 'frame' } }">框架筆記</RouterLink><span class="breadcrumb__sep">/</span>
+          <RouterLink :to="{ path: '/blog', query: { category: 'frame' } }">框架筆記</RouterLink
+          ><span class="breadcrumb__sep">/</span>
           <span class="breadcrumb__current">Pinia 不只是 Vuex 的替代品</span>
         </nav>
 
@@ -21,17 +22,27 @@
         </header>
 
         <div class="prose">
-          <p>從 Vuex 搬到 Pinia 的那個下午，我以為只是換個 API。把 <code>mutations</code> 拿掉、<code>state</code> 變成 <code>ref</code>、語法清爽很多 — 一開始我對它的理解就停在這裡。</p>
-          <p>直到專案越長越大，我才發現真正改變的不是寫法，而是我<strong>怎麼思考「狀態該放在哪裡」</strong>這件事。這篇就把那段重新理解的過程記下來。</p>
+          <p>
+            從 Vuex 搬到 Pinia 的那個下午，我以為只是換個 API。把 <code>mutations</code> 拿掉、<code
+              >state</code
+            >
+            變成 <code>ref</code>、語法清爽很多 — 一開始我對它的理解就停在這裡。
+          </p>
+          <p>
+            直到專案越長越大，我才發現真正改變的不是寫法，而是我<strong>怎麼思考「狀態該放在哪裡」</strong>這件事。這篇就把那段重新理解的過程記下來。
+          </p>
 
           <h2>先看一個最小的 store</h2>
-          <p>Pinia 的 setup store 寫起來，幾乎就像在寫一個普通的 composable。<code>ref</code> 是 state、<code>computed</code> 是 getter、一般函式就是 action：</p>
+          <p>
+            Pinia 的 setup store 寫起來，幾乎就像在寫一個普通的 composable。<code>ref</code> 是
+            state、<code>computed</code> 是 getter、一般函式就是 action：
+          </p>
 
           <div class="codeblock">
             <div class="codeblock__bar">
-              <span class="codeblock__dot" style="background:#E66A5A"></span>
-              <span class="codeblock__dot" style="background:#E6B86A"></span>
-              <span class="codeblock__dot" style="background:#7FB87C"></span>
+              <span class="codeblock__dot" style="background: #e66a5a"></span>
+              <span class="codeblock__dot" style="background: #e6b86a"></span>
+              <span class="codeblock__dot" style="background: #7fb87c"></span>
               <span class="codeblock__file">stores/cart.ts</span>
             </div>
             <pre><code><span class="tok-key">import</span> { defineStore } <span class="tok-key">from</span> <span class="tok-str">'pinia'</span>
@@ -53,18 +64,31 @@
 })</code></pre>
           </div>
 
-          <p>沒有 <code>mutations</code> 這層了。一開始我很不安 — 少了那層約束，狀態不就到處都能改？但寫久了反而發現，<strong>約束從來不是靠框架，而是靠你把邏輯收在哪</strong>。</p>
+          <p>
+            沒有 <code>mutations</code> 這層了。一開始我很不安 —
+            少了那層約束，狀態不就到處都能改？但寫久了反而發現，<strong>約束從來不是靠框架，而是靠你把邏輯收在哪</strong>。
+          </p>
 
           <h2>真正的轉變：store 是「邊界」，不是「倉庫」</h2>
-          <p>以前我把 Vuex 當成一個大倉庫，什麼都往裡塞。換到 Pinia 之後，我開始把每個 store 看成一個<strong>有清楚邊界的小模組</strong> — 它負責一件事，對外只暴露該暴露的。</p>
+          <p>
+            以前我把 Vuex 當成一個大倉庫，什麼都往裡塞。換到 Pinia 之後，我開始把每個 store
+            看成一個<strong>有清楚邊界的小模組</strong> — 它負責一件事，對外只暴露該暴露的。
+          </p>
 
-          <blockquote><p>「狀態管理難的從來不是工具，是你願不願意替每一塊資料想清楚：它屬於誰、誰能改它。」</p></blockquote>
+          <blockquote>
+            <p>
+              「狀態管理難的從來不是工具，是你願不願意替每一塊資料想清楚：它屬於誰、誰能改它。」
+            </p>
+          </blockquote>
 
           <h3>我現在分 store 的三個問題</h3>
           <ul>
             <li>這塊資料<strong>跨幾個頁面</strong>用？只有一個頁面用到，可能根本不該進 store。</li>
             <li>它的<strong>生命週期</strong>多長？跟著使用者登入登出，還是只活在一次操作裡？</li>
-            <li>誰<strong>有資格改它</strong>？把改的入口收斂成幾個 action，比到處 <code>state.x = y</code> 安全太多。</li>
+            <li>
+              誰<strong>有資格改它</strong>？把改的入口收斂成幾個 action，比到處
+              <code>state.x = y</code> 安全太多。
+            </li>
           </ul>
 
           <figure>
@@ -73,8 +97,17 @@
           </figure>
 
           <h2>小結</h2>
-          <p>Pinia 給我的不是更短的程式碼，而是一個重新思考的機會。如果你也正準備搬家，別急著一比一翻譯舊的 Vuex module — 趁這次，好好替每塊狀態重新想一次邊界。</p>
-          <p>下一篇我想寫 <RouterLink :to="{ path: '/blog', query: { category: 'frame' } }">store 之間怎麼互相依賴又不打結</RouterLink>，那又是另一個我踩過的坑了。</p>
+          <p>
+            Pinia
+            給我的不是更短的程式碼，而是一個重新思考的機會。如果你也正準備搬家，別急著一比一翻譯舊的
+            Vuex module — 趁這次，好好替每塊狀態重新想一次邊界。
+          </p>
+          <p>
+            下一篇我想寫
+            <RouterLink :to="{ path: '/blog', query: { category: 'frame' } }"
+              >store 之間怎麼互相依賴又不打結</RouterLink
+            >，那又是另一個我踩過的坑了。
+          </p>
         </div>
 
         <div class="post-tags">

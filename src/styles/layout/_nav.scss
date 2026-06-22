@@ -22,7 +22,9 @@
     margin-inline: auto;
     padding: var(--space-4) var(--space-6);
 
-    > :last-child { justify-self: end; }
+    > :last-child {
+      justify-self: end;
+    }
   }
 
   &__brand {
@@ -78,14 +80,23 @@
     text-decoration: none;
     padding: 8px 14px;
     border-radius: var(--radius-full);
-    transition: color var(--dur-base) var(--ease-soft),
-                background var(--dur-base) var(--ease-soft);
+    transition:
+      color var(--dur-base) var(--ease-soft),
+      background var(--dur-base) var(--ease-soft);
 
-    &:hover { color: var(--color-accent); background: var(--orange-50); }
-    &.is-active { color: var(--text-heading); background: var(--cream-200); }
+    &:hover {
+      color: var(--color-accent);
+      background: var(--orange-50);
+    }
+    &.is-active {
+      color: var(--text-heading);
+      background: var(--cream-200);
+    }
   }
 
   @include respond-to('sm') {
-    &__links { display: none; }
+    &__links {
+      display: none;
+    }
   }
 }

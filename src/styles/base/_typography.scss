@@ -14,14 +14,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, .font-display {
+h1,
+h2,
+h3,
+.font-display {
   font-family: var(--font-display);
   color: var(--text-heading);
   line-height: var(--leading-tight);
   font-weight: var(--weight-bold);
 }
 
-code, pre, kbd, samp { font-family: var(--font-mono); }
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+}
 
 // --- 長文排版 ------------------------------------------------
 .prose {
@@ -29,7 +37,9 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   line-height: var(--leading-relaxed);
   color: var(--text-body);
 
-  > * + * { margin-top: var(--space-6); }
+  > * + * {
+    margin-top: var(--space-6);
+  }
 
   h2 {
     font-family: var(--font-display);
@@ -46,7 +56,10 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
     color: var(--text-heading);
     margin-top: var(--space-10);
   }
-  p { margin: 0; text-wrap: pretty; }
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
 
   a {
     color: var(--text-link);
@@ -54,15 +67,24 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
     text-underline-offset: 3px;
     text-decoration-color: var(--orange-200);
     transition: text-decoration-color var(--dur-base);
-    &:hover { text-decoration-color: var(--color-accent); }
+    &:hover {
+      text-decoration-color: var(--color-accent);
+    }
   }
 
-  strong { color: var(--text-heading); font-weight: var(--weight-bold); }
+  strong {
+    color: var(--text-heading);
+    font-weight: var(--weight-bold);
+  }
 
-  ul { padding-left: 1.4em; }
+  ul {
+    padding-left: 1.4em;
+  }
   li {
     margin-top: var(--space-2);
-    &::marker { color: var(--color-primary); }
+    &::marker {
+      color: var(--color-primary);
+    }
   }
 
   // 行內 code（注意：dark code block 內的 code 由 _code-block 覆寫）
@@ -84,10 +106,14 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
     font-family: var(--font-display);
     font-size: var(--text-lg);
     line-height: var(--leading-normal);
-    p { margin: 0; }
+    p {
+      margin: 0;
+    }
   }
 
-  figure { margin: 0; }
+  figure {
+    margin: 0;
+  }
   figcaption {
     margin-top: var(--space-3);
     font-size: var(--text-sm);

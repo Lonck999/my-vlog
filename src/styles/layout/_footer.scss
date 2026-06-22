@@ -26,7 +26,11 @@
     color: var(--text-heading);
   }
 
-  &__note { margin: 0; font-size: var(--text-sm); color: var(--text-muted); }
+  &__note {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
 
   &__social {
     display: inline-flex;
@@ -42,9 +46,10 @@
       color: var(--text-muted);
       border: 1px solid var(--color-border);
       background: var(--color-surface);
-      transition: color var(--dur-base) var(--ease-soft),
-                  border-color var(--dur-base) var(--ease-soft),
-                  transform var(--dur-fast) var(--ease-soft);
+      transition:
+        color var(--dur-base) var(--ease-soft),
+        border-color var(--dur-base) var(--ease-soft),
+        transform var(--dur-fast) var(--ease-soft);
 
       &:hover {
         color: var(--color-accent);

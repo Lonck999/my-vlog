@@ -13,15 +13,36 @@
   border-radius: var(--radius-full);
   white-space: nowrap;
 
-  &--sm { font-size: var(--text-xs); padding: 3px 10px; }
-  &--md { font-size: var(--text-sm); padding: 5px 13px; }
+  &--sm {
+    font-size: var(--text-xs);
+    padding: 3px 10px;
+  }
+  &--md {
+    font-size: var(--text-sm);
+    padding: 5px 13px;
+  }
 
   // 分類色 — 用 data 屬性或 modifier 切換
-  &--lang    { color: var(--cat-lang-fg);    background: var(--cat-lang-bg); }
-  &--frame   { color: var(--cat-frame-fg);   background: var(--cat-frame-bg); }
-  &--work    { color: var(--cat-work-fg);    background: var(--cat-work-bg); }
-  &--project { color: var(--cat-project-fg); background: var(--cat-project-bg); }
-  &--neutral { color: var(--text-muted);     background: var(--cream-200); }
+  &--lang {
+    color: var(--cat-lang-fg);
+    background: var(--cat-lang-bg);
+  }
+  &--frame {
+    color: var(--cat-frame-fg);
+    background: var(--cat-frame-bg);
+  }
+  &--work {
+    color: var(--cat-work-fg);
+    background: var(--cat-work-bg);
+  }
+  &--project {
+    color: var(--cat-project-fg);
+    background: var(--cat-project-bg);
+  }
+  &--neutral {
+    color: var(--text-muted);
+    background: var(--cream-200);
+  }
 
   // 篩選用：outline + active
   &--outline {
@@ -29,8 +50,14 @@
     border: 1px solid var(--color-border);
     color: var(--text-muted);
     cursor: pointer;
-    transition: color var(--dur-base), border-color var(--dur-base), background var(--dur-base);
-    &:hover { border-color: var(--orange-300); color: var(--color-accent); }
+    transition:
+      color var(--dur-base),
+      border-color var(--dur-base),
+      background var(--dur-base);
+    &:hover {
+      border-color: var(--orange-300);
+      color: var(--color-accent);
+    }
   }
   &.is-active {
     background: var(--color-primary);
@@ -55,5 +82,10 @@
   border-radius: var(--radius-full);
   padding: 5px 12px;
 
-  &__dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    flex: none;
+  }
 }

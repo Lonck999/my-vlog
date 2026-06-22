@@ -6,7 +6,10 @@
         <div>
           <h1 class="cv-name">地瓜球工程師</h1>
           <p class="cv-role">前端工程師 · Vue 生態圈</p>
-          <p class="cv-tagline">寫程式第 3 年，喜歡把複雜的東西拆乾淨，也喜歡把學到的東西寫下來。如果遇到難題來這找找，希望可以找到能幫你解決的答案。</p>
+          <p class="cv-tagline">
+            寫程式第 3
+            年，喜歡把複雜的東西拆乾淨，也喜歡把學到的東西寫下來。如果遇到難題來這找找，希望可以找到能幫你解決的答案。
+          </p>
           <div class="cv-contacts">
             <a class="cv-contact" href="#">
               <svg
@@ -21,7 +24,8 @@
               >
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-10 5L2 7" />
-              </svg> hello@warmlight.dev
+              </svg>
+              hello@warmlight.dev
             </a>
             <a class="cv-contact" href="#">
               <svg
@@ -37,7 +41,8 @@
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
                 />
-              </svg> github.com/ray
+              </svg>
+              github.com/ray
             </a>
             <span class="cv-contact">
               <svg
@@ -53,12 +58,15 @@
                 <path
                   d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3z"
                 />
-              </svg> 台灣 · Taiwan
+              </svg>
+              台灣 · Taiwan
             </span>
           </div>
         </div>
         <div class="cv-head__actions">
-          <button class="btn btn--primary btn--sm" type="button" @click="window.print()">下載 PDF</button>
+          <button class="btn btn--primary btn--sm" type="button" @click="window.print()">
+            下載 PDF
+          </button>
           <RouterLink class="btn btn--ghost btn--sm" to="/">回首頁</RouterLink>
         </div>
       </header>
@@ -90,7 +98,9 @@
                 <div class="tl-role">資深前端工程師</div>
                 <div class="tl-company">某 SaaS 新創</div>
                 <ul class="tl-bullets">
-                  <li>主導前端架構從 Options API 遷移到 Composition API + Pinia，元件複用率明顯提升。</li>
+                  <li>
+                    主導前端架構從 Options API 遷移到 Composition API + Pinia，元件複用率明顯提升。
+                  </li>
                   <li>建立團隊共用的設計系統與元件庫，讓新功能開發從「重畫」變成「組裝」。</li>
                   <li>把 CI/CD 流程重寫一遍，部署時間從 12 分鐘壓到 3 分鐘以內。</li>
                 </ul>
@@ -144,25 +154,25 @@
                 <div class="skill-row">
                   <span class="skill-row__name">JavaScript</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:92%"></span>
+                    <span class="bar__fill" style="width: 92%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">TypeScript</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:85%"></span>
+                    <span class="bar__fill" style="width: 85%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">HTML / CSS</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:90%"></span>
+                    <span class="bar__fill" style="width: 90%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">Vue 3</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:93%"></span>
+                    <span class="bar__fill" style="width: 93%"></span>
                   </span>
                 </div>
               </div>
@@ -171,25 +181,25 @@
                 <div class="skill-row">
                   <span class="skill-row__name">Pinia</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:88%"></span>
+                    <span class="bar__fill" style="width: 88%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">Vite</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:82%"></span>
+                    <span class="bar__fill" style="width: 82%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">Nuxt</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:72%"></span>
+                    <span class="bar__fill" style="width: 72%"></span>
                   </span>
                 </div>
                 <div class="skill-row">
                   <span class="skill-row__name">SCSS</span>
                   <span class="bar">
-                    <span class="bar__fill" style="width:86%"></span>
+                    <span class="bar__fill" style="width: 86%"></span>
                   </span>
                 </div>
               </div>
@@ -197,25 +207,27 @@
                 <div class="skill-group__label">工具 & 其他</div>
                 <div class="chip-row">
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>Git
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>Git
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>CI / CD
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>CI / CD
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>Figma
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>Figma
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>Vitest
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>Vitest
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>RWD
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>RWD
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>Web Performance
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>Web
+                    Performance
                   </span>
                   <span class="techchip">
-                    <span class="techchip__dot" style="background:var(--orange-500)"></span>REST / API
+                    <span class="techchip__dot" style="background: var(--orange-500)"></span>REST /
+                    API
                   </span>
                 </div>
               </div>

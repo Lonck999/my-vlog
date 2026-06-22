@@ -36,7 +36,9 @@
     color: var(--color-accent);
     text-decoration: none;
     transition: gap var(--dur-base) var(--ease-out);
-    &:hover { gap: 11px; }
+    &:hover {
+      gap: 11px;
+    }
   }
 
   @include respond-to('sm') {
@@ -71,7 +73,9 @@
     letter-spacing: var(--tracking-tight);
     color: var(--text-heading);
     margin: var(--space-5) 0 0;
-    @include respond-to('sm') { font-size: var(--text-3xl); }
+    @include respond-to('sm') {
+      font-size: var(--text-3xl);
+    }
   }
 
   &__lead {

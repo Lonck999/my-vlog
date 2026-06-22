@@ -2,7 +2,7 @@
 //  pages/_home.scss
 //  文字導向雙欄：個人 profile 側欄 + 文章列表主欄。
 // =============================================================
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .home {
   --wash-h: 360px;
@@ -12,7 +12,7 @@
   align-items: start;
   padding: var(--space-12) 0 var(--space-8);
 
-  @include respond-to("lg") {
+  @include respond-to('lg') {
     grid-template-columns: 1fr;
     gap: var(--space-10);
   }
@@ -23,7 +23,7 @@
   position: sticky;
   top: 88px;
 
-  @include respond-to("lg") {
+  @include respond-to('lg') {
     position: static;
   }
 
@@ -32,14 +32,14 @@
     padding: var(--space-7) var(--space-6) var(--space-6);
     text-align: center;
 
-    @include respond-to("lg") {
+    @include respond-to('lg') {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: var(--space-6);
       text-align: left;
       align-items: center;
     }
-    @include respond-to("sm") {
+    @include respond-to('sm') {
       grid-template-columns: 1fr;
       text-align: center;
       justify-items: center;
@@ -50,7 +50,7 @@
     width: 118px;
     height: 118px;
     margin: 20px auto;
-    @include respond-to("lg") {
+    @include respond-to('lg') {
       grid-row: span 2;
     }
   }
@@ -93,10 +93,10 @@
     gap: 7px;
     justify-content: center;
     margin-top: var(--space-5);
-    @include respond-to("lg") {
+    @include respond-to('lg') {
       justify-content: flex-start;
     }
-    @include respond-to("sm") {
+    @include respond-to('sm') {
       justify-content: center;
     }
   }
@@ -108,13 +108,13 @@
     padding-top: var(--space-5);
     border-top: 1px solid var(--color-border-faint);
 
-    @include respond-to("lg") {
+    @include respond-to('lg') {
       justify-content: flex-start;
       border-top: none;
       padding-top: 0;
       margin-top: var(--space-3);
     }
-    @include respond-to("sm") {
+    @include respond-to('sm') {
       justify-content: center;
     }
 
@@ -141,7 +141,7 @@
   }
   &__cats {
     margin-top: var(--space-5);
-    @include respond-to("lg") {
+    @include respond-to('lg') {
       grid-column: 1 / -1;
     }
   }
@@ -202,7 +202,7 @@
       font-style: normal;
       color: var(--color-primary);
     }
-    @include respond-to("sm") {
+    @include respond-to('sm') {
       font-size: var(--text-2xl);
     }
   }
@@ -220,7 +220,7 @@
     @include mono-label;
     margin: var(--space-8) 0 var(--space-2);
     &::after {
-      content: "";
+      content: '';
       flex: 1;
       height: 1px;
       background: var(--color-border-faint);
@@ -269,7 +269,7 @@
     margin: 0;
     text-wrap: balance;
     transition: color var(--dur-base) var(--ease-soft);
-    @include respond-to("sm") {
+    @include respond-to('sm') {
       font-size: var(--text-xl);
     }
   }
