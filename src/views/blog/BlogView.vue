@@ -29,7 +29,7 @@ const filteredPosts = computed(() =>
           <IconSwap :size="14" />
           BLOG · 文章
         </span>
-        <h1 class="page-head__title">寫下來，才算真的學會</h1>
+        <h1 class="page-head__title">能用自己的方式寫下來，才算真的學會</h1>
         <p class="page-head__lead">
           語言的底層、框架的細節、工作裡真實踩過的坑 — 都記在這。挑個主題慢慢逛。
         </p>

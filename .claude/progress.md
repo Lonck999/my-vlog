@@ -1,64 +1,50 @@
-# 進度紀錄：HomeView 優化（sr 助教引導）
+# 進度紀錄：HomeView 系列優化（sr 助教引導）
 
-> 最後更新：2026-06-22（追加：使用者決定暫緩 PostCard 抽取）
+> 最後更新：2026-06-22
 
 ## 目前任務
 
-由 `sr` agent（資深工程師助教）以蘇格拉底式引導，針對 `src/views/home/HomeView.vue` 進行 code review 優化，依「變動大小由小到大」排序處理 5 個項目。
+由 `sr` agent（資深工程師助教）以蘇格拉底式引導，針對首頁／Blog／Resume／Projects 進行 code review 優化。第一輪（HomeView 5 項）已結案，第二輪（全站 SVG icon 抽取）已完成並通過驗證，目前進入第三輪討論：BlogView 的版頭靜態文案（kicker/標題/說明）該抽到哪個資料模組。
 
 ## 已完成步驟
 
-1. **Lint / 格式細節清理**（已完成）
-   - `HomeView.vue` import 補空格、`:src="'/images/avatar.jpg'"` 改為靜態 `src` 綁定
-   - 跑過 `npm run format`，發現 oxfmt 會把 `<script>` 改成雙引號 + 加分號（跟專案既有單引號/無分號慣例不一致，**尚未處理，見下方待辦**）
-   - 額外發現並解釋了 Vue template 的「whitespace-sensitive 格式化」現象（`<a><svg>` 之間的 `>` 換行黏字問題）
+### 第一輪：HomeView 優化（5 項，已結案）
 
-2. **`posts.js` 補 `id` 欄位**（已完成）
-   - `src/data/posts.js` 每筆文章已有 `id: 1` ~ `id: 12`
-   - `HomeView.vue` 第 98 行、`BlogView.vue` 第 69 行的 `v-for` 都已改成 `:key="post.id"`（原本是 `:key="post.title"`）
+1. **Lint / 格式細節清理**：`HomeView.vue` import 補空格、avatar `src` 改靜態綁定。
+2. **`posts.js` 補 `id` 欄位**：每篇文章已有 `id: 1`~`id: 12`；`HomeView.vue`/`BlogView.vue` 的 `v-for` 已改用 `:key="post.id"`。
+3. **空狀態樣式抽取**：新增 `src/styles/components/_empty-state.scss`（`.empty-state` 通用 class），`_index.scss` 已 `@forward`；`HomeView.vue`/`BlogView.vue` 都已套用；`_blog.scss` 改用巢狀寫法加 `grid-column: 1 / -1`。
+4. **`personalInfo.js` 命名重整**：拆成 `profileInfo`/`sidebarMenuConfig`/`feedLabels`/`welcomeLabels` 四個語意分組匯出（camelCase），`HomeView.vue` 同步改名。
+5. **PostCard 抽取**：使用者決定**暫緩**，見下方「還沒做完的事」。
 
-3. **HomeView 補空狀態分支 + 抽出共用樣式**（已完成）
-   - 新增 `src/styles/components/_empty-state.scss`，定義通用 `.empty-state` class（`text-align: center` / `color: var(--text-muted)` / `padding: var(--space-16) 0` / `font-size: var(--text-md)`，**不含** `grid-column: 1 / -1`）
-   - `src/styles/components/_index.scss` 已 `@forward 'empty-state';`
-   - `HomeView.vue` 第 111 行：`<p v-if="latestPosts.length === 0" class="empty-state">目前還沒有文章。</p>`
-   - `BlogView.vue` 第 81 行：`<p v-if="filteredPosts.length === 0" class="empty-state">這個分類還沒有文章。</p>`
-   - `src/styles/pages/_blog.scss` 原本的 `.blog__empty` 規則已刪除，改為巢狀寫法 `.blog-grid .empty-state { grid-column: 1 / -1; }`（因為只有 BlogView 的 grid 容器需要這個版面屬性，HomeView 是 flex 不需要）
+### 第二輪：全站 SVG icon 抽取（已完成）
 
-4. **`personalInfo.js` 命名重新檢視**（已完成）
-   - 舊版：`homeViewAsideBase`（混雜個人資訊 + 選單標題 + 按鈕文案）、`homeViewSectionBase`
-   - 新版拆成 4 個依語意分組的匯出：
-     - `profileInfo`：`name` / `role` / `bio` / `techs`
-     - `sidebarMenuConfig`：`title`（'分類導覽'）
-     - `feedLabels`：`morePostsTitle`（'查看所有文章'，順手修掉了原本 `'看所有文章更多文章'` 的文案重複 typo）
-     - `welcomeLabels`：`welcomeTitle` / `welcomeSubtitle` / `latestPostLabel`（camelCase，已修正中途一度出現的 `welcome_labels` snake_case 與 `config: '分類導覽'` 語意不清的問題）
-   - `HomeView.vue` 第 3 行 import 與模板內所有引用都已同步改名
+- 盤點發現全專案 6 個檔案（`AppHeader.vue`、`AppFooter.vue`、`HomeView.vue`、`BlogView.vue`、`ResumeView.vue`、`ProjectsView.vue`）共用 8 種重複內嵌 SVG。
+- 新增 `src/components/icons/`：`IconBase.vue`（共同屬性 + `size` prop，預設 18，補上 `aria-hidden`/`focusable="false"`）+ 8 個圖示元件（`IconSparkle`/`IconMail`/`IconGithub`/`IconFile`/`IconArrowRight`/`IconSwap`/`IconFolder`/`IconShield`）。
+- 上述 6 個檔案的內嵌 `<svg>` 全部替換為對應 `<IconXxx :size="原尺寸" />`，**刻意保留每處原本的視覺尺寸**（不同檔案同一圖示尺寸本來就不一致，這次不順便統一，列為後續可選項）。
+- 驗證：`npm run lint` 通過（0 警告 0 錯誤）；`npm run test:unit` 有 1 個既有失敗（`App.spec.js`，與 avatar 路徑解析有關），已用 `git stash` 確認**改動前 main 分支就會失敗**，與本次無關。
 
 ## 還沒做完的事
 
-5. **抽取 `PostCard.vue` 共用元件**（待辦，是最大的改動，尚未開始）
-   - 對象：`HomeView.vue` 第 97-112 行（`.postlist` 內的 `RouterLink v-for="post in latestPosts"`）與 `BlogView.vue` 對應的 `.blog-grid` 內 `RouterLink v-for="post in filteredPosts"`，兩處結構幾乎一致（meta 日期/分類/閱讀時間 + title + excerpt）
-   - 已在對話中引導使用者思考的設計問題，**還沒有使用者的答案**：
-     - `PostCard` 該吃哪些 props（候選：`post.date`、`post.category`（或已轉換好的 `label`）、`post.readTime`、`post.title`、`post.excerpt`；`categories` 查找表是否該整個傳入還是由外部先轉換好 `categoryLabel` 再傳入）
-     - `<RouterLink ... to="/post">` 目前是**寫死的固定路徑**，不管哪篇文章都連到 `/post`（已知技術債，尚未討論要不要趁這次抽取順便改成 `/post/${post.id}` 之類的動態路徑——但目前專案路由 `src/router/index.js` 是否已有對應的動態路由尚未確認）
-     - 整個卡片要連到哪個網址這件事，該由 `PostCard` 內部決定還是由父層傳入——尚未定案
-   - 連帶提醒但尚未處理：SVG icon（GitHub / Mail / 履歷 / 箭頭，共 4 處內嵌 SVG）尚未抽成獨立 icon 元件，建議跟 `PostCard` 一起或之後處理
+### A. PostCard.vue 抽取（暫緩，等接後端時再做）
 
-## 5. PostCard 抽取——使用者決定：暫緩
+- 使用者明確表示：「先維持這樣，等之後上線完開始寫後端時再來改善」。
+- 牽連技術債（一起延後）：`<RouterLink to="/post">` 寫死固定路徑、`src/router/index.js` 沒有 `/post/:id` 動態路由、`PostView.vue` 完全是靜態內容沒有用 `route.params.id` 載入文章。
+- PostCard props 介面（`categoryLabel` 字串 vs 整個 `categories` 查找表）尚未決定，不需要現在逼使用者選。
 
-延續 sr 助教蘇格拉底式引導，討論到「`categories.find()` 查找邏輯該放 PostCard 內部還是父層先轉換好再傳入」這一題時，使用者明確表示：
+### B. 全站「版頭靜態文案」該放哪——進行中，尚未動手
 
-> 先維持這樣，等之後上線完開始寫後端時再來改善
+使用者問到 `BlogView.vue` 的 `page-head__kicker`/`<h1>`/`<p>` 這段版頭文案是否適合寫進 `posts.js`。已引導使用者理解：`posts.js` 是文章資料陣列，跟「頁面版頭文案」是不同關注點，不該混在一起；應該照 `personalInfo.js`（`profileInfo`/`welcomeLabels`...）的先例，抽到獨立的資料模組。
 
-也就是：
-- **HomeView.vue / BlogView.vue 目前的重複卡片結構暫不抽成 `PostCard.vue`**，維持現狀（各自獨立寫一份 `RouterLink v-for` + `categories.find()`）。
-- 連帶的「`<RouterLink to="/post">` 寫死、`/post/:id` 動態路由、`PostView.vue` 完全沒有依 id 載入文章內容」這幾項技術債，也一併延後到接後端時統一處理（sr 助教過程中額外發現：`PostView.vue` 目前是完全靜態內容，連 `route.params.id` 都沒有用到，比卡片連結技術債更大，值得屆時一起處理）。
-- PostCard 的 props 介面設計（候選：`categoryLabel` 字串 vs 整個 `categories` 查找表）暫不需要決定，等真的要動手時再議。
+**尚未決定、待使用者回覆**：
+- 新模組要怎麼命名/歸類？（例如 `src/data/blogPageContent.js` 單頁一個檔案，還是建一個通用的 `pageHeaders.js` 把 Blog/Projects/Resume 的版頭文案都集中管理）
+- 是否要先盤點 `ProjectsView.vue`、`ResumeView.vue` 是否也有類似的版頭文案結構（kicker + title + lead），再一次性決定存放方式，而不是先處理 Blog 再回頭重做。
 
-**本輪 HomeView 優化任務（5 個項目）視為結案**：1～4 項已完成並落地，第 5 項（PostCard 抽取）經使用者決定延後，非中途卡住。
+下次接續時直接從這題問起，不要重新解釋「`posts.js` 不適合放版頭文案」這個已經達成共識的結論。
 
 ## 對話中收集到但尚未寫入程式碼的資訊（避免重複詢問）
 
-- 使用者已確認 `BlogView.vue` 原本的空狀態 class 叫 `blog__empty`（已處理，僅留存於此作為歷史脈絡）
-- 使用者已決定空狀態樣式要做成**全域共用 class**（非元件化），並選擇放在 `src/styles/components/` 而非 `base/`（理由：`base/` 只放設計 token，不放具體 UI 樣式）——此決策邏輯未來若有類似「樣式該放哪一層」的疑問可參考
-- **PostCard.vue 抽取、`/post/:id` 動態路由、`PostView.vue` 依 id 載入內容**：使用者已決定全部延後到「上線後開始寫後端」時一起處理，目前不要主動提起或動手
-- 已知但尚未修的技術債：`npm run format`（oxfmt）會把 `.vue` 的 `<script>` 區塊改成雙引號 + 加分號，跟專案既有的單引號、無分號慣例不一致，可能需要補一份 oxfmt/prettier 設定鎖定既有風格——使用者尚未決定是否處理
+- 空狀態樣式決定放 `src/styles/components/`（全域共用 class，非元件化），不放 `base/`（`base/` 只放設計 token）。
+- PostCard.vue 抽取、`/post/:id` 動態路由、`PostView.vue` 依 id 載入內容：全部延後到接後端時一起處理，目前不要主動提起或動手。
+- **命名慣例已澄清（純知識性問答，不需要寫入程式碼）**：靜態資料（物件/陣列，如 `posts`、`profileInfo`、未來的版頭文案模組）一律維持 camelCase，不要因為「內容不變」就改成全大寫 `SCREAMING_SNAKE_CASE`——全大寫只留給單一基本型別的真常數（如 `MAX_RETRY`、enum 值）。
+- 已知但尚未修的技術債：`npm run format`（oxfmt）會把 `.vue` 的 `<script>` 改成雙引號 + 加分號，跟專案既有單引號/無分號慣例不一致，使用者尚未決定是否要補設定鎖定風格。
+- 後續可選項（不急）：8 種 icon 在不同檔案的視覺尺寸不一致（14~19px），統一與否是另一個設計決策，這次刻意保留原尺寸沒動。

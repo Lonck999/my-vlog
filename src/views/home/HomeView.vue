@@ -69,8 +69,6 @@ const latestPosts = posts.slice(0, 6);
                 <span class="tag tag--sm" :class="`tag--${post.category}`">
                   {{ categories.find((c) => c.key === post.category)?.label }}
                 </span>
-                <span class="dot"></span>
-                <span>{{ post.readTime }}閱讀</span>
               </div>
               <h3 class="postitem__title">{{ post.title }}</h3>
               <p class="postitem__excerpt">{{ post.excerpt }}</p>
