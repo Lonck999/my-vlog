@@ -16,7 +16,7 @@ const latestPosts = posts.slice(0, 6);
         <aside class="profile">
           <div class="profile__card">
             <div class="profile__photo-wrap">
-              <img class="profile__photo" src="/images/avatar.jpg" alt="地瓜球的照片" />
+              <img class="profile__photo" :src="'/images/avatar.jpg'" alt="地瓜球的照片" />
             </div>
             <h1 class="profile__name">{{ profileInfo.name }}</h1>
             <p class="profile__role">{{ profileInfo.role }}</p>
