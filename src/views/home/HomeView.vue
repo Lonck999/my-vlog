@@ -62,7 +62,12 @@ const latestPosts = posts.slice(0, 6);
           <p class="feed__sub">{{ welcomeLabels.welcomeSubtitle }}</p>
           <div class="feed__label">{{ welcomeLabels.latestPostLabel }}</div>
           <div class="postlist">
-            <RouterLink v-for="post in latestPosts" :key="post.id" class="postitem" to="/post">
+            <RouterLink
+              v-for="post in latestPosts"
+              :key="post.id"
+              class="postitem"
+              :to="{ name: 'post', params: { id: post.id } }"
+            >
               <div class="postitem__meta">
                 <span>{{ post.date }}</span>
                 <span class="dot"></span>

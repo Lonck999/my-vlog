@@ -56,13 +56,17 @@ const filteredPosts = computed(() =>
 
       <section class="block" style="padding-top: 0">
         <div class="blog-grid">
-          <RouterLink v-for="post in filteredPosts" :key="post.id" class="post-card" to="/post">
+          <RouterLink
+            v-for="post in filteredPosts"
+            :key="post.id"
+            class="post-card"
+            :to="{ name: 'post', params: { id: post.id } }"
+          >
             <div class="post-card__meta">
               <span>{{ post.date }}</span>
               <span class="tag tag--sm" :class="`tag--${post.category}`">
                 {{ categories.find((c) => c.key === post.category)?.label }}
               </span>
-              <span>{{ post.readTime }}</span>
             </div>
             <h3 class="post-card__title">{{ post.title }}</h3>
             <p class="post-card__excerpt">{{ post.excerpt }}</p>
