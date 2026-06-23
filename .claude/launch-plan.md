@@ -29,7 +29,7 @@
 ## Stage 3 — 上線前基本配置
 
 - [ ] 補 SEO 基本盤：`index.html` 的 `<title>`、`<meta name="description">`、favicon（確認非 Vite 預設圖示）。
-- [ ] 確認 `vite.config.js` 的 `base` 設定符合目標部署平台（GitHub Pages 需子路徑，Vercel/Netlify/Cloudflare Pages 通常不需要）。
+- [x] 確認 `base` 設定符合目標部署平台（GitHub Pages 需子路徑，Vercel/Netlify/Cloudflare Pages 通常不需要）。已新增 `npm run build:gh-pages`（用 `vite build --base=/my-vlog/`，不動 `vite.config.js` 避免影響 `vitest.config.js` 的 mergeConfig），並用 `scripts/copy-404.js` 把 `index.html` 複製成 `404.html` 處理 GitHub Pages 沒有 SPA fallback 的問題，已本機模擬驗證可行。
 
 ## Stage 4 — 選定部署平台並設定
 
