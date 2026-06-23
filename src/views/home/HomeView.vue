@@ -1,5 +1,5 @@
 <script setup>
-import { posts, categories, categoryCounts } from '@/data/posts'
+import { posts, categories, categoryCounts, emptyBlog } from '@/data/posts'
 import { profileInfo, sidebarMenuConfig, feedLabels, welcomeLabels } from '@/data/personalInfo'
 import IconGithub from '@/components/icons/IconGithub.vue'
 import IconMail from '@/components/icons/IconMail.vue'
@@ -78,7 +78,7 @@ const latestPosts = posts.slice(0, 6)
               <h3 class="postitem__title">{{ post.title }}</h3>
               <p class="postitem__excerpt">{{ post.excerpt }}</p>
             </RouterLink>
-            <p v-if="latestPosts.length === 0" class="empty-state">目前還沒有文章。</p>
+            <p v-if="latestPosts.length === 0" class="empty-state">{{ emptyBlog }}</p>
           </div>
           <div class="feed__more">
             <RouterLink class="btn btn--secondary btn--md" to="/blog">

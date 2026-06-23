@@ -161,3 +161,7 @@ export const categoryCounts = {
   work: 9,
   project: 6,
 }
+
+export const emptyBlog = '目前還沒有文章。'
+
+
