@@ -17,7 +17,7 @@
 - [x] 在 `router/index.js` 加上對應的動態路由參數。
 - [x] 確認 `BlogView.vue` 文章列表連到 `/post/:id` 時帶對正確的 id/slug。
 - [x] 刪除 `src/stores/counter.js`（確認無引用後直接刪，不要保留範例）。
-- [ ] 檢查並 commit 目前 working tree 上未進版控的修改。
+- [x] 檢查並 commit 目前 working tree 上未進版控的修改。
 
 ## Stage 2 — 品質把關
 
