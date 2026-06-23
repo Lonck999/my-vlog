@@ -1,4 +1,5 @@
 <script setup>
+import { resumeProfile } from '@/data/personalInfo'
 import IconMail from '@/components/icons/IconMail.vue'
 import IconGithub from '@/components/icons/IconGithub.vue'
 import IconSparkle from '@/components/icons/IconSparkle.vue'
@@ -13,24 +14,21 @@ import IconShield from '@/components/icons/IconShield.vue'
       <header class="cv-head">
         <img class="cv-photo" :src="'/images/avatar.jpg'" alt="Ray 的照片" />
         <div>
-          <h1 class="cv-name">地瓜球工程師</h1>
-          <p class="cv-role">前端工程師 · Vue 生態圈</p>
-          <p class="cv-tagline">
-            寫程式第 3
-            年，喜歡把複雜的東西拆乾淨，也喜歡把學到的東西寫下來。如果遇到難題來這找找，希望可以找到能幫你解決的答案。
-          </p>
+          <h1 class="cv-name">{{ resumeProfile.name }}</h1>
+          <p class="cv-role">{{ resumeProfile.role }}</p>
+          <p class="cv-tagline">{{ resumeProfile.tagline }}</p>
           <div class="cv-contacts">
             <a class="cv-contact" href="#">
               <IconMail :size="15" />
-              hello@warmlight.dev
+              {{ resumeProfile.contacts.email }}
             </a>
             <a class="cv-contact" href="#">
               <IconGithub :size="15" />
-              github.com/ray
+              {{ resumeProfile.contacts.github }}
             </a>
             <span class="cv-contact">
               <IconSparkle :size="15" />
-              台灣 · Taiwan
+              {{ resumeProfile.contacts.location }}
             </span>
           </div>
         </div>

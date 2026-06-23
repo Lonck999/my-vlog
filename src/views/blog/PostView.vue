@@ -9,9 +9,7 @@ const route = useRoute()
 const postIndex = computed(() => posts.findIndex((p) => String(p.id) === route.params.id))
 const post = computed(() => posts[postIndex.value])
 
-const categoryLabel = computed(
-  () => categories.find((c) => c.key === post.value?.category)?.label,
-)
+const categoryLabel = computed(() => categories.find((c) => c.key === post.value?.category)?.label)
 
 const bodyHtml = computed(() => post.value?.content ?? `<p>${post.value?.excerpt ?? ''}</p>`)
 

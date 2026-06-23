@@ -1,7 +1,7 @@
 // =============================================================
 //  pages/_blog.scss  — 文章列表（篩選列 + 卡片 grid）
 // =============================================================
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .blog-page {
   --wash-h: 440px;
@@ -33,7 +33,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
-  @include respond-to("md") {
+  @include respond-to('md') {
     grid-template-columns: 1fr;
   }
 

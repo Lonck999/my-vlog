@@ -1,12 +1,12 @@
 <script setup>
-import { posts, categories, categoryCounts } from "@/data/posts";
-import { profileInfo, sidebarMenuConfig, feedLabels, welcomeLabels } from "@/data/personalInfo";
-import IconGithub from "@/components/icons/IconGithub.vue";
-import IconMail from "@/components/icons/IconMail.vue";
-import IconFile from "@/components/icons/IconFile.vue";
-import IconArrowRight from "@/components/icons/IconArrowRight.vue";
+import { posts, categories, categoryCounts } from '@/data/posts'
+import { profileInfo, sidebarMenuConfig, feedLabels, welcomeLabels } from '@/data/personalInfo'
+import IconGithub from '@/components/icons/IconGithub.vue'
+import IconMail from '@/components/icons/IconMail.vue'
+import IconFile from '@/components/icons/IconFile.vue'
+import IconArrowRight from '@/components/icons/IconArrowRight.vue'
 
-const latestPosts = posts.slice(0, 6);
+const latestPosts = posts.slice(0, 6)
 </script>
 
 <template>

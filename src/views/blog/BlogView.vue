@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { posts, categories } from '@/data/posts'
+import { blogPageHead } from '@/data/pageContent'
 import IconSwap from '@/components/icons/IconSwap.vue'
 
 const route = useRoute()
@@ -26,15 +27,11 @@ const filteredPosts = computed(() =>
     <div class="container">
       <header class="page-head">
         <span class="page-head__kicker">
-
-          
           <IconSwap :size="14" />
-          BLOG · 文章
+          {{ blogPageHead.kickerLabel }}
         </span>
-        <h1 class="page-head__title">能用自己的方式寫下來，才算真的學會</h1>
-        <p class="page-head__lead">
-          語言的底層、框架的細節、工作裡真實踩過的坑 — 都記在這。挑個主題慢慢逛。
-        </p>
+        <h1 class="page-head__title">{{ blogPageHead.title }}</h1>
+        <p class="page-head__lead">{{ blogPageHead.lead }}</p>
       </header>
 
       <div class="filterbar">

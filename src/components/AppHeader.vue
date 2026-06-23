@@ -1,13 +1,7 @@
 <script setup>
 import IconSparkle from './icons/IconSparkle.vue'
 import IconMail from './icons/IconMail.vue'
-
-const navLinks = [
-  { to: '/', label: '首頁' },
-  { to: '/blog', label: '文章' },
-  { to: '/projects', label: '專案' },
-  { to: '/resume', label: '履歷' },
-]
+import { navLinks } from '@/data/pageContent'
 </script>
 
 <template>

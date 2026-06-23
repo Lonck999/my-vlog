@@ -1,5 +1,6 @@
 <script setup>
 import { projects } from '@/data/projects'
+import { projectsPageHead } from '@/data/pageContent'
 import IconFolder from '@/components/icons/IconFolder.vue'
 import IconArrowRight from '@/components/icons/IconArrowRight.vue'
 import IconGithub from '@/components/icons/IconGithub.vue'
@@ -11,12 +12,10 @@ import IconGithub from '@/components/icons/IconGithub.vue'
       <header class="page-head">
         <span class="page-head__kicker">
           <IconFolder :size="14" />
-          PROJECTS · 開發專案
+          {{ projectsPageHead.kickerLabel }}
         </span>
-        <h1 class="page-head__title">親手做出來的東西</h1>
-        <p class="page-head__lead">
-          從一個想法到真的能用，中間總有很多沒寫進文章的細節。這裡放我做完、也還在維護的小東西。
-        </p>
+        <h1 class="page-head__title">{{ projectsPageHead.title }}</h1>
+        <p class="page-head__lead">{{ projectsPageHead.lead }}</p>
       </header>
 
       <section class="block" style="padding-top: 0">
@@ -42,7 +41,7 @@ import IconGithub from '@/components/icons/IconGithub.vue'
               <div class="proj__foot">
                 <a class="proj__link" href="#">
                   查看成品
-                  <IconArrowRight :size="15" />
+                  <IconArrowRight :size="16" />
                 </a>
                 <a class="proj__icon-link" href="#" aria-label="原始碼">
                   <IconGithub :size="18" />

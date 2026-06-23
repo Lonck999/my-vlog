@@ -26,3 +26,15 @@ export const welcomeLabels = {
     '歡迎來到我的角落。\n這裡沒有什麼高深的大道理，只有一個工程師慢慢寫下來的學習筆記與真實經驗，\n如果有你需要或受用的你就拿去吧，\n或是你有更好的想法也拜託你跟我說一下，\n想交流一起進步啊~~~',
   latestPostLabel: '最新文章',
 }
+
+export const resumeProfile = {
+  name: '地瓜球工程師',
+  role: '前端工程師 · Vue 生態圈',
+  tagline:
+    '寫程式第 3 年，喜歡把複雜的東西拆乾淨，也喜歡把學到的東西寫下來。如果遇到難題來這找找，希望可以找到能幫你解決的答案。',
+  contacts: {
+    email: 'hello@warmlight.dev',
+    github: 'github.com/ray',
+    location: '台灣 · Taiwan',
+  },
+}
