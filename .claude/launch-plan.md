@@ -21,10 +21,10 @@
 
 ## Stage 2 — 品質把關
 
-- [ ] `npm run lint` 全過。
-- [ ] `npm run test:unit` 全過。
-- [ ] `npm run build && npm run test:e2e` 全過。
-- [ ] `npm run preview` 手動走一遍五個頁面（首頁、文章列表、文章詳情、作品集、履歷）+ 換頁行為。
+- [x] `npm run lint` 全過。
+- [x] `npm run test:unit` 全過。
+- [x] `npm run build && npm run test:e2e` 全過。
+- [x] `npm run preview` 手動走一遍五個頁面（首頁、文章列表、文章詳情、作品集、履歷）+ 換頁行為。
 
 ## Stage 3 — 上線前基本配置
 
