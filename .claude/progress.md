@@ -1,10 +1,10 @@
 # 進度紀錄：HomeView 系列優化（sr 助教引導）
 
-> 最後更新：2026-06-22
+> 最後更新：2026-06-24
 
 ## 目前任務
 
-由 `sr` agent（資深工程師助教）以蘇格拉底式引導，針對首頁／Blog／Resume／Projects 進行 code review 優化。第一輪（HomeView 5 項）、第二輪（全站 SVG icon 抽取）、第三輪（靜態頁面文案抽取）皆已完成。目前沒有進行中的子任務，下次可從「還沒做完的事」挑一項繼續，或請使用者提出新檔案要 review。
+由 `sr` agent（資深工程師助教）以蘇格拉底式引導，針對首頁／Blog／Resume／Projects 進行 code review 優化。第一輪至第七輪皆已完成。目前沒有進行中的子任務，下次可從「還沒做完的事」（A：`categories.find()` helper、B：`href="#"` 佔位連結）挑一項繼續，或請使用者提出新檔案要 review。
 
 ## 已完成步驟
 
@@ -58,13 +58,15 @@
 - **結論（已修正）**：`PostCard.vue` **不該抽**，兩處 markup 維持現狀。真正重複、且該抽的只有 `categories.find((c) => c.key === post.category)?.label` 這段查找邏輯（兩處逐字相同），但**這部分使用者尚未要求動手**，目前還是兩處各自寫一次。
 - 使用者要求把這個誤判的教訓寫進 sr 助教的設定，避免之後再犯：已修改 `.claude/agent/sr.md`（專案版）與 `C:\Users\user\.claude\agents\sr.md`（全域版），新增「7.1 抽取建議前的驗證義務」一節，要求之後建議抽元件前必須先讀 CSS/SCSS 查證，並區分「資料邏輯重複」（抽函式）vs「UI 結構重複」（才抽元件）。
 
-### 第七輪：空狀態文案資料化（進行中）
+### 第七輪：空狀態文案資料化（已完成）
 
 - 使用者主動提出：空狀態文案（`latestPosts.length === 0`/`filteredPosts.length === 0` 時顯示的提示文字）不該寫死在 template 裡，該放進資料層。
 - 已建立共識：放進 `src/data/posts.js`（不是 `personalInfo.js`），因為語意上跟文章列表相關，跟 `posts`/`categories`/`categoryCounts` 放在一起比較合理。
-- 已完成一半：`posts.js` 新增 `export const emptyBlog = '目前還沒有文章。'`（第 165 行），`HomeView.vue` 已改用 `{{ emptyBlog }}`。
-- **尚未完成**：`BlogView.vue` 第 74 行仍是寫死字串 `這個分類還沒有文章。`，沒有引用 `emptyBlog` 或任何 `posts.js` 匯出。
-- **已拋出但使用者尚未回答的問題**：「目前還沒有文章」（首頁，全站沒文章）跟「這個分類還沒有文章」（BlogView，篩選後沒文章）算同一組文案（共用 `emptyBlog`，可能要改個更通用的名字）還是該分開（`posts.js` 裡定義兩個獨立匯出）？下次接續時直接問這個，不要重新問前面已經有共識的部分。
+- 「全站沒文章」跟「分類篩選後沒文章」是否共用同一文案：使用者決定**共用一個** `emptyBlog`（理由：兩者本質上指同一件事——這個位置沒有文章）。
+- `posts.js` 的 `emptyBlog = '目前還沒有文章。'` 維持不變（文字本身已經夠通用，不用為了共用再改字）。
+- `BlogView.vue` 已改成 `import { posts, categories, emptyBlog } from '@/data/posts'`，第 74 行從寫死字串 `這個分類還沒有文章。` 改成 `{{ emptyBlog }}`。
+- `HomeView.vue` 先前已改用 `{{ emptyBlog }}`，至此兩處空狀態文案完全共用同一個匯出。
+- `npm run lint` 通過（0 警告 0 錯誤）。
 
 ## 還沒做完的事
 
@@ -88,4 +90,4 @@
 - 空狀態樣式決定放 `src/styles/components/`（全域共用 class，非元件化），不放 `base/`（`base/` 只放設計 token）。
 - **PostCard.vue 共用元件抽取**：仍延後（使用者原話「等之後上線完開始寫後端時再來改善」），但牽連的路由技術債使用者已自行解決，見上方 A 項最新狀態——下次討論時不要再假設路由還沒做。
 - **命名慣例已澄清（純知識性問答，不需要寫入程式碼）**：靜態資料（物件/陣列，如 `posts`、`profileInfo`、版頭文案模組）一律維持 camelCase，不要因為「內容不變」就改成全大寫 `SCREAMING_SNAKE_CASE`——全大寫只留給單一基本型別的真常數（如 `MAX_RETRY`、enum 值）。
-- 下次接續時，可從「還沒做完的事」A（`categories.find()` helper）、B（`href="#"` 佔位連結）、或第七輪剩下的 `BlogView.vue` 空狀態文案問題挑一個繼續，C 已解決不用再提。PostCard 本體第六輪已確認不該抽，不要再重複建議。
+- 第七輪已全部完成（`emptyBlog` 共用，`BlogView.vue` 已套用），下次接續時可從「還沒做完的事」A（`categories.find()` helper）或 B（`href="#"` 佔位連結）挑一個繼續，C 已解決不用再提。PostCard 本體第六輪已確認不該抽，不要再重複建議。

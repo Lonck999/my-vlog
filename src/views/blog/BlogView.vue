@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { posts, categories } from '@/data/posts'
+import { posts, categories, emptyBlog } from '@/data/posts'
 import { blogPageHead } from '@/data/pageContent'
 import IconSwap from '@/components/icons/IconSwap.vue'
 
@@ -71,7 +71,7 @@ const filteredPosts = computed(() =>
             <p class="post-card__excerpt">{{ post.excerpt }}</p>
           </RouterLink>
 
-          <p v-if="filteredPosts.length === 0" class="empty-state">這個分類還沒有文章。</p>
+          <p v-if="filteredPosts.length === 0" class="empty-state">{{ emptyBlog }}</p>
         </div>
       </section>
     </div>
